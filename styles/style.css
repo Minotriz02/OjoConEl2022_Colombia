@@ -1,0 +1,11 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+canvas {
+    background-image: url("/img/Colombia.png");
+    background-size: cover;
+    display: block;
+    margin: 0 auto;
+}
