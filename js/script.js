@@ -1,32 +1,27 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var image = document.getElementById('source');
-var ballRadius = 10;
-var x = canvas.width/2;
-var y = canvas.height-30;
-var dx = 2;
-var dy = -2;
+
+
 var characterHeight = 70;
 var characterWidth = 75;
-var characterX = (canvas.width-characterWidth)/2;
-var characterY = (canvas.width-characterWidth)/2;
+var characterX = (canvas.width - characterWidth) / 2;
+var characterY = (canvas.width - characterWidth) / 2;
+
 var rightPressed = false;
 var leftPressed = false;
 var upPressed = false;
 var downPressed = false;
-var brickRowCount = 3;
-var brickColumnCount = 5;
-var brickWidth = 75;
-var brickHeight = 20;
-var brickPadding = 10;
-var brickOffsetTop = 30;
-var brickOffsetLeft = 30;
+var ePressed = false;
 
-var bricks = [];
-for(c=0; c<brickColumnCount; c++) {
-    bricks[c] = [];
-    for(r=0; r<brickRowCount; r++) {
-        bricks[c][r] = { x: 0, y: 0 };
+
+class hotSpot {
+    constructor(posX, posY, width, height, departamento) {
+        this.posX = posX;
+        this.posY = posY;
+        this.width = width;
+        this.height = height;
+        this.departamento = departamento;
     }
 }
 
@@ -34,99 +29,78 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
 function keyDownHandler(e) {
-    if(e.keyCode == 39) {
+    if (e.keyCode == 39) {
         rightPressed = true;
     }
-    else if(e.keyCode == 37) {
+    else if (e.keyCode == 37) {
         leftPressed = true;
     }
-    else if(e.keyCode == 38) {
+    else if (e.keyCode == 38) {
         upPressed = true;
     }
-    else if(e.keyCode == 40) {
+    else if (e.keyCode == 40) {
         downPressed = true;
+    }
+    else if (e.keyCode == 69) {
+        ePressed = true;
     }
 }
 function keyUpHandler(e) {
-    if(e.keyCode == 39) {
+    if (e.keyCode == 39) {
         rightPressed = false;
     }
-    else if(e.keyCode == 37) {
+    else if (e.keyCode == 37) {
         leftPressed = false;
     }
-    else if(e.keyCode == 38) {
+    else if (e.keyCode == 38) {
         upPressed = false;
     }
-    else if(e.keyCode == 40) {
+    else if (e.keyCode == 40) {
         downPressed = false;
+    }
+    else if (e.keyCode == 69) {
+        ePressed = false;
     }
 }
 
-function drawBall() {
+function drawCharacter() {
+    ctx.drawImage(image, characterX, characterY, characterWidth, characterHeight);
+}
+function drawHotSpots(HS) {
     ctx.beginPath();
-    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+    ctx.rect(HS.posX, HS.posY, HS.width, HS.height);
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
 }
-function drawCharacter() {
-    ctx.drawImage(image, characterX, characterY, characterWidth, characterHeight);
-}
-function drawBricks() {
-    for(c=0; c<brickColumnCount; c++) {
-        for(r=0; r<brickRowCount; r++) {
-            var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
-            var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
-            bricks[c][r].x = brickX;
-            bricks[c][r].y = brickY;
-            ctx.beginPath();
-            ctx.rect(brickX, brickY, brickWidth, brickHeight);
-            ctx.fillStyle = "#0095DD";
-            ctx.fill();
-            ctx.closePath();
-        }
-    }
-}
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBricks();
-    drawBall();
+
+    const H1 = new hotSpot((canvas.width / 4), (canvas.height / 2), 20, 20, "Valle");
+    drawHotSpots(H1);
+
     drawCharacter();
-    
-    if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
-        dx = -dx;
-    }
-    if(y + dy < ballRadius) {
-        dy = -dy;
-    }
-    else if(y + dy > canvas.height-ballRadius) {
-        if(x > characterX && x < characterX + characterWidth) {
-           if(y= y-characterHeight){
-            dy = -dy  ;
-			 }
-        }
-        else {
-            //alert("GAME OVER");
-            //document.location.reload();
-        }
-    }
-    
-    if(rightPressed && characterX < canvas.width-characterWidth) {
+
+    if (rightPressed && characterX < canvas.width - characterWidth) {
         characterX += 4;
     }
-    else if(leftPressed && characterX > 0) {
+    else if (leftPressed && characterX > 0) {
         characterX -= 4;
     }
-    else if(upPressed && characterY > 0) {
+    else if (upPressed && characterY > 0) {
         characterY -= 4;
     }
-    else if(downPressed && characterY < canvas.height-characterWidth) {
+    else if (downPressed && characterY < canvas.height - characterWidth) {
         characterY += 4;
     }
-    
-    x += dx;
-    y += dy;
+
+    if (ePressed && characterY < H1.posY && characterY > H1.posY - characterHeight && characterX < H1.posX && characterX > H1.posX - characterWidth) {
+        window.open("http://127.0.0.1:5500/video.html", "Valle del Cauca")
+        ePressed = false;
+    }
+
+
 }
 
 setInterval(draw, 10);
