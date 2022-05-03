@@ -27,6 +27,11 @@ class hotSpot {
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener('swiped', function (e) {
+    console.log(e.target); // element that was swiped
+    console.log(e.detail); // see event data below
+    console.log(e.detail.dir); // swipe direction
+});
 
 function keyDownHandler(e) {
     if (e.keyCode == 39) {
