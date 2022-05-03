@@ -13,6 +13,9 @@ var leftPressed = false;
 var upPressed = false;
 var downPressed = false;
 var ePressed = false;
+var touch = false;
+
+var delay = 100;
 
 
 class hotSpot {
@@ -27,10 +30,39 @@ class hotSpot {
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+
+document.addEventListener("touchstart", function (e) {
+    touch = true;
+    setTimeout(() => {
+        touch = false
+    }, delay);
+});
+
 document.addEventListener('swiped', function (e) {
-    console.log(e.target); // element that was swiped
-    console.log(e.detail); // see event data below
-    console.log(e.detail.dir); // swipe direction
+    if (e.detail.dir == "right") {
+        rightPressed = true;
+        setTimeout(() => {
+            rightPressed = false
+        }, delay);
+    }
+    else if (e.detail.dir == "left") {
+        leftPressed = true;
+        setTimeout(() => {
+            leftPressed = false
+        }, delay);
+    }
+    else if (e.detail.dir == "up") {
+        upPressed = true;
+        setTimeout(() => {
+            upPressed = false
+        }, delay);
+    }
+    else if (e.detail.dir == "down") {
+        downPressed = true;
+        setTimeout(() => {
+            downPressed = false
+        }, delay);
+    }
 });
 
 function keyDownHandler(e) {
@@ -100,7 +132,7 @@ function draw() {
         characterY += 4;
     }
 
-    if (ePressed && characterY < H1.posY && characterY > H1.posY - characterHeight && characterX < H1.posX && characterX > H1.posX - characterWidth) {
+    if ((ePressed || touch) && characterY < H1.posY && characterY > H1.posY - characterHeight && characterX < H1.posX && characterX > H1.posX - characterWidth) {
         window.open("http://127.0.0.1:5500/video.html", "Valle del Cauca")
         ePressed = false;
     }
