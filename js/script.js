@@ -1,8 +1,8 @@
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
-let image = document.getElementById('source');
+//let image = document.getElementById('source');
 
-gifler('../img/idle.gif').frames(canvas, onDrawFrame);
+
 
 let characterHeight = 60;
 let characterWidth = 35;
@@ -81,6 +81,7 @@ function keyDownHandler(e) {
     }
     else if (e.keyCode == 69) {
         ePressed = true;
+        
     }
 }
 function keyUpHandler(e) {
@@ -101,19 +102,9 @@ function keyUpHandler(e) {
     }
 }
 
-function drawCharacter() {
-    ctx.drawImage(image, characterX, characterY, characterWidth, characterHeight);
-}
 
 
-//https://konvajs.org/docs/sandbox/GIF_On_Canvas.html
 
-function onDrawFrame(ctx, frame) {
-    // update canvas that we are using for Konva.Image
-    ctx.drawImage(frame.buffer, 0, 0);
-    // redraw the layer
-    layer.draw();
-  }
 function drawHotSpots(HS) {
     ctx.beginPath();
     ctx.rect(HS.posX, HS.posY, HS.width, HS.height);
@@ -122,33 +113,36 @@ function drawHotSpots(HS) {
     ctx.closePath();
 }
 
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+let draw = (ctx, frame) => {
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    //drawCharacter();
+    ctx.drawImage(frame.buffer, characterX, characterY, characterWidth, characterHeight); 
+    //onDrawFrame();
+}
+let draw2 = () => {
     const H1 = new hotSpot((canvas.width / 4), (canvas.height / 2), 20, 20, "Valle");
     drawHotSpots(H1);
 
-    drawCharacter();
-
     if (rightPressed && characterX < canvas.width - characterWidth) {
-        characterX += 4;
+        characterX += 8;
     }
     else if (leftPressed && characterX > 0) {
-        characterX -= 4;
+        characterX -= 8;
     }
     else if (upPressed && characterY > 0) {
-        characterY -= 4;
+        characterY -= 8;
     }
     else if (downPressed && characterY < canvas.height - characterWidth) {
-        characterY += 4;
+        characterY += 8;
     }
 
     if ((ePressed || touch) && characterY < H1.posY && characterY > H1.posY - characterHeight && characterX < H1.posX && characterX > H1.posX - characterWidth) {
-        window.open("http://127.0.0.1:5500/video.html", "Valle del Cauca")
+        window.open("http://127.0.0.1:5500/video.html", "Valle del Cauca");
         ePressed = false;
     }
 
-
 }
 
-setInterval(draw, 10);
+gifler('../img/idle.gif').frames(canvas, draw);
+setInterval(draw2, 400);
