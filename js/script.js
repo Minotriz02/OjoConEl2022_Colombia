@@ -15,6 +15,11 @@ var downPressed = false;
 var ePressed = false;
 
 
+if(sessionStorage.getItem('Estrella')===null){
+    sessionStorage.setItem('Estrella',0);
+}
+
+
 class hotSpot {
     constructor(posX, posY, width, height, departamento) {
         this.posX = posX;
@@ -96,7 +101,9 @@ function draw() {
     }
 
     if (ePressed && characterY < H1.posY && characterY > H1.posY - characterHeight && characterX < H1.posX && characterX > H1.posX - characterWidth) {
-        window.open("http://127.0.0.1:5500/video.html", "Valle del Cauca")
+        //var w=  window.open("video.html", "Valle del Cauca")
+      window.location.replace("http://127.0.0.1:5500//video.html");
+      //w.traerEstrellas(numeroEstrellas);
         ePressed = false;
     }
 
