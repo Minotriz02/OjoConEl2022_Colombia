@@ -1,21 +1,22 @@
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-var image = document.getElementById('source');
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
+let image = document.getElementById('source');
 
+gifler('../img/idle.gif').frames(canvas, onDrawFrame);
 
-var characterHeight = 70;
-var characterWidth = 75;
-var characterX = (canvas.width - characterWidth) / 2;
-var characterY = (canvas.width - characterWidth) / 2;
+let characterHeight = 60;
+let characterWidth = 35;
+let characterX = (canvas.width - characterWidth) / 2;
+let characterY = (canvas.width - characterWidth) / 2;
 
-var rightPressed = false;
-var leftPressed = false;
-var upPressed = false;
-var downPressed = false;
-var ePressed = false;
-var touch = false;
+let rightPressed = false;
+let leftPressed = false;
+let upPressed = false;
+let downPressed = false;
+let ePressed = false;
+let touch = false;
 
-var delay = 100;
+let delay = 100;
 
 
 class hotSpot {
@@ -103,6 +104,16 @@ function keyUpHandler(e) {
 function drawCharacter() {
     ctx.drawImage(image, characterX, characterY, characterWidth, characterHeight);
 }
+
+
+//https://konvajs.org/docs/sandbox/GIF_On_Canvas.html
+
+function onDrawFrame(ctx, frame) {
+    // update canvas that we are using for Konva.Image
+    ctx.drawImage(frame.buffer, 0, 0);
+    // redraw the layer
+    layer.draw();
+  }
 function drawHotSpots(HS) {
     ctx.beginPath();
     ctx.rect(HS.posX, HS.posY, HS.width, HS.height);
