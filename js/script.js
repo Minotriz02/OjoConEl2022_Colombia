@@ -1,18 +1,22 @@
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-var image = document.getElementById('source');
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
+//let image = document.getElementById('source');
 
 
-var characterHeight = 70;
-var characterWidth = 75;
-var characterX = (canvas.width - characterWidth) / 2;
-var characterY = (canvas.width - characterWidth) / 2;
 
-var rightPressed = false;
-var leftPressed = false;
-var upPressed = false;
-var downPressed = false;
-var ePressed = false;
+let characterHeight = 60;
+let characterWidth = 35;
+let characterX = (canvas.width - characterWidth) / 2;
+let characterY = (canvas.width - characterWidth) / 2;
+
+let rightPressed = false;
+let leftPressed = false;
+let upPressed = false;
+let downPressed = false;
+let ePressed = false;
+let touch = false;
+
+let delay = 100;
 
 
 if(sessionStorage.getItem('Estrella')===null){
@@ -33,6 +37,40 @@ class hotSpot {
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
+document.addEventListener("touchstart", function (e) {
+    touch = true;
+    setTimeout(() => {
+        touch = false
+    }, delay);
+});
+
+document.addEventListener('swiped', function (e) {
+    if (e.detail.dir == "right") {
+        rightPressed = true;
+        setTimeout(() => {
+            rightPressed = false
+        }, delay);
+    }
+    else if (e.detail.dir == "left") {
+        leftPressed = true;
+        setTimeout(() => {
+            leftPressed = false
+        }, delay);
+    }
+    else if (e.detail.dir == "up") {
+        upPressed = true;
+        setTimeout(() => {
+            upPressed = false
+        }, delay);
+    }
+    else if (e.detail.dir == "down") {
+        downPressed = true;
+        setTimeout(() => {
+            downPressed = false
+        }, delay);
+    }
+});
+
 function keyDownHandler(e) {
     if (e.keyCode == 39) {
         rightPressed = true;
@@ -48,6 +86,7 @@ function keyDownHandler(e) {
     }
     else if (e.keyCode == 69) {
         ePressed = true;
+        
     }
 }
 function keyUpHandler(e) {
@@ -68,9 +107,9 @@ function keyUpHandler(e) {
     }
 }
 
-function drawCharacter() {
-    ctx.drawImage(image, characterX, characterY, characterWidth, characterHeight);
-}
+
+
+
 function drawHotSpots(HS) {
     ctx.beginPath();
     ctx.rect(HS.posX, HS.posY, HS.width, HS.height);
@@ -79,25 +118,28 @@ function drawHotSpots(HS) {
     ctx.closePath();
 }
 
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+let draw = (ctx, frame) => {
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    //drawCharacter();
+    ctx.drawImage(frame.buffer, characterX, characterY, characterWidth, characterHeight); 
+    //onDrawFrame();
+}
+let draw2 = () => {
     const H1 = new hotSpot((canvas.width / 4), (canvas.height / 2), 20, 20, "Valle");
     drawHotSpots(H1);
 
-    drawCharacter();
-
     if (rightPressed && characterX < canvas.width - characterWidth) {
-        characterX += 4;
+        characterX += 8;
     }
     else if (leftPressed && characterX > 0) {
-        characterX -= 4;
+        characterX -= 8;
     }
     else if (upPressed && characterY > 0) {
-        characterY -= 4;
+        characterY -= 8;
     }
     else if (downPressed && characterY < canvas.height - characterWidth) {
-        characterY += 4;
+        characterY += 8;
     }
 
     if (ePressed && characterY < H1.posY && characterY > H1.posY - characterHeight && characterX < H1.posX && characterX > H1.posX - characterWidth) {
@@ -107,7 +149,7 @@ function draw() {
         ePressed = false;
     }
 
-
 }
 
-setInterval(draw, 10);
+gifler('../img/idle.gif').frames(canvas, draw);
+setInterval(draw2, 400);
