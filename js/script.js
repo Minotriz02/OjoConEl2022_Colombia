@@ -120,7 +120,11 @@ function keyUpHandler(e) {
 }
 
 
-
+function calAfinidad() {
+    var numeroDeEstrellas =sessionStorage.getItem('Estrella');
+    var porcNum = ((numeroDeEstrellas/3) * 100).toFixed();
+    document.getElementById('afin').innerHTML = porcNum+"%";
+}
 
 function drawHotSpots(HS) {
     ctx.beginPath();
@@ -136,12 +140,13 @@ let draw = (ctx, frame) => {
     //drawCharacter();
     ctx.drawImage(frame.buffer, characterX, characterY, characterWidth, characterHeight); 
     //onDrawFrame();
+    calAfinidad();
 }
 let draw2 = () => {
     
-    const H1 = new hotSpot((canvas.width / 4), (canvas.height / 2), 20, 20, "Valle");
-    const H2 = new hotSpot((canvas.width / 2), (canvas.height / 4), 20, 20, "Valle2");
-    const H3 = new hotSpot((canvas.width / 3), (canvas.height / 4), 20, 20, "Valle3");
+    const H1 = new hotSpot((canvas.width / 4), (canvas.height / 2), 10, 8, "Valle");
+    const H2 = new hotSpot((canvas.width / 2), (canvas.height / 4), 10, 8, "Valle2");
+    const H3 = new hotSpot((canvas.width / 3), (canvas.height / 4), 10, 8, "Valle3");
     
  
     if(V1Confir!=1){
