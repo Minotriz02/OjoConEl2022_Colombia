@@ -4,10 +4,10 @@ let ctx = canvas.getContext("2d");
 
 
 
-let characterHeight = 60;
-let characterWidth = 35;
+let characterHeight = 30;
+let characterWidth = 30;
 let characterX = (canvas.width - characterWidth) / 2;
-let characterY = (canvas.width - characterWidth) / 2;
+let characterY = (canvas.height - characterWidth) / 2;
 
 let rightPressed = false;
 let leftPressed = false;
@@ -121,8 +121,14 @@ let draw = (ctx, frame) => {
     //onDrawFrame();
 }
 let draw2 = () => {
-    const H1 = new hotSpot((canvas.width / 4), (canvas.height / 2), 20, 20, "Valle");
+    const H1 = new hotSpot((canvas.width / 3), (canvas.height / 5), 20, 10, "Valle");
     drawHotSpots(H1);
+
+    const H2 = new hotSpot((canvas.width / 5), (canvas.height / 1.7), 20, 10, "Valle");
+    drawHotSpots(H2);
+
+    const H3 = new hotSpot((canvas.width / 1.5), (canvas.height / 1.5), 20, 10, "Valle");
+    drawHotSpots(H3);
 
     if (rightPressed && characterX < canvas.width - characterWidth) {
         characterX += 8;
