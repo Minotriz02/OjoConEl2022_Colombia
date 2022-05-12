@@ -15,7 +15,7 @@ var video = document.querySelector("video");
 var bt1 =  document.getElementById("bt1");
 var bt2 =  document.getElementById("bt2");
 var btEmpe = document.getElementById("BotonEmpezar");
-var txtAfinidad = document.getElementById("txtAfinidad");
+var txtAfinidad = document.getElementById("txtAfiidad");
 var contAfinidad = document.getElementById("contAfinidad");
 var contAfinidadFinal = document.getElementById("contAfinidadFinal");
 var btVolver= document.getElementById("buttonVoler");
@@ -123,6 +123,10 @@ function modificarBotones(){
     bt2.style.display = "none";
     numVideos++;
     sessionStorage.setItem("numVideos",numVideos);
+    var afinidad = ((numeroDeEstrellas/3)*100).toFixed();
+    var newTxt ="Tienes un un "+afinidad+"%"+" de compaginidad con Rodolfo Hernandez";
+    console.log(newTxt);
+    txtAfinidad.innerHTML = newTxt;
     if(numVideos>2){
         contAfinidadFinal.style.display = "flex";
     }else{

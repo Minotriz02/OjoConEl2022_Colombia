@@ -1,7 +1,7 @@
 
 body{
-    background-color:#7FB637;
-	
+    background-color:#22B8EE;
+	font-family: 'VT323', monospace;
 }
 
 #main{
@@ -190,7 +190,7 @@ object-fit: contain;
 }
 
 #BotonEmpezar{
-	width: 25%;
+	width: 15%;
 	height: 30%;
 	background-color: white;
 	border-color: black;
@@ -213,3 +213,22 @@ object-fit: contain;
 	height: 100%;
 }
 
+#contBtVolver{
+	width: 8%;
+	height: 18%;
+	position: absolute;
+	top: 9%;
+	left: 90%;
+}
+
+#imgBtVolver{
+	width: 100%;
+	height: 100%;
+}
+
+#buttonVoler{
+
+	border: none;
+	background: none;
+
+}
