@@ -18,11 +18,23 @@ let touch = false;
 
 let delay = 100;
 
-
-if(sessionStorage.getItem('Estrella')===null){
-    sessionStorage.setItem('Estrella',0);
+if(sessionStorage.getItem('video1')==null){
+    sessionStorage.setItem('video1',0);
+    sessionStorage.setItem('video2',0);
+    sessionStorage.setItem('video3',0);
 }
 
+const V1Confir = sessionStorage.getItem("video1");
+const V2Confir = sessionStorage.getItem("video2");
+const V3Confir = sessionStorage.getItem("video3");
+console.log(V1Confir +","+V2Confir+","+V3Confir);
+
+if(sessionStorage.getItem('Estrella')==null){
+    sessionStorage.setItem('Estrella',0);
+    
+}
+
+var numVideos= sessionStorage.getItem("numVideos");
 
 class hotSpot {
     constructor(posX, posY, width, height, departamento) {
@@ -127,7 +139,19 @@ let draw = (ctx, frame) => {
 }
 let draw2 = () => {
     const H1 = new hotSpot((canvas.width / 4), (canvas.height / 2), 20, 20, "Valle");
-    drawHotSpots(H1);
+    const H2 = new hotSpot((canvas.width / 2), (canvas.height / 4), 20, 20, "Valle2");
+    const H3 = new hotSpot((canvas.width / 3), (canvas.height / 4), 20, 20, "Valle3");
+    
+ 
+    if(V1Confir!=1){
+        drawHotSpots(H1);
+    }
+    if(V2Confir!=1){
+        drawHotSpots(H2);
+    }
+    if(V3Confir!=1){
+        drawHotSpots(H3);
+    }
 
     if (rightPressed && characterX < canvas.width - characterWidth) {
         characterX += 8;
@@ -143,11 +167,30 @@ let draw2 = () => {
     }
 
     if (ePressed && characterY < H1.posY && characterY > H1.posY - characterHeight && characterX < H1.posX && characterX > H1.posX - characterWidth) {
-        //var w=  window.open("video.html", "Valle del Cauca")
+        console.log(sessionStorage.getItem('Video'))
+        sessionStorage.setItem('Video',1);
       window.location.replace("http://127.0.0.1:5500//video.html");
-      //w.traerEstrellas(numeroEstrellas);
+
         ePressed = false;
     }
+
+    if (ePressed && characterY < H2.posY && characterY > H2.posY - characterHeight && characterX < H2.posX && characterX > H2.posX - characterWidth) {
+        console.log(sessionStorage.getItem('Video'))
+        sessionStorage.setItem('Video',2);
+        console.log(sessionStorage.getItem('Video'))
+      window.location.replace("http://127.0.0.1:5500//video.html");
+        ePressed = false;
+      
+    }
+
+    if (ePressed && characterY < H3.posY && characterY > H3.posY - characterHeight && characterX < H3.posX && characterX > H3.posX - characterWidth) {
+      console.log(sessionStorage.getItem('Video'))
+        sessionStorage.setItem('Video',3);
+          window.location.replace("http://127.0.0.1:5500//video.html");
+        ePressed = false;
+        
+    }
+
 
 }
 

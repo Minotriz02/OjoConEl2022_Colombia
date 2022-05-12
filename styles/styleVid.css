@@ -1,6 +1,6 @@
 
 body{
-    background-color:darkseagreen;
+    background-color:#7FB637;
 	
 }
 
@@ -22,6 +22,8 @@ body{
 	top: 30%;
 	left: 25%;
 }
+
+
 
 #contAfinidadFinal{
 	width: 40%;
@@ -188,18 +190,26 @@ object-fit: contain;
 }
 
 #BotonEmpezar{
-	width: 10%;
-	height: 5%;
+	width: 25%;
+	height: 30%;
 	background-color: white;
 	border-color: black;
 	position:absolute;
 	z-index: 100;
-	top: 50%;
-
+	top: 40%;
+	left: 38%;
+	border: none;
+	background: none;
 }
 
 #contBotonEmpezar{
 	display: flex;
 	justify-content: center;
+	
+}
+
+#imgBtEmpezar{
+	width: 100%;
+	height: 100%;
 }
 
