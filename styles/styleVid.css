@@ -1,96 +1,215 @@
+
 body{
-    background-color: black;
+    background-color:#7FB637;
+	overflow: hidden;
 }
 
+#main{
+	position: relative;
+}
 #contAfinidad{
-    width:12%;
-    height: 10%;
-    margin-left: 10%;
-    background-color: rgba(0, 0, 0, 0.8);
-	color: white;
+	width: 40%;
+	height: 50%;
+	object-fit: contain;
+	background-image: url("../img/marco.png");
+	background-size: 100% 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	z-index: 100;
+	top: 30%;
+	left: 25%;
+}
+
+
+
+#contAfinidadFinal{
+	width: 40%;
+	height: 50%;
+	object-fit: contain;
+	background-image: url("../img/marco.png");
+	background-size: 100% 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	z-index: 100;
+	top: 22%;
+	left: 26%;
+	padding-bottom: 5%;
+}
+
+#contEstrellas{
+	width: 60%;
+	height: 40%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-top: 6%;
 	
-  position: absolute;
-  left: -1%;
-  top: 2.5%;
-  border-radius: 0.5rem;
 }
 
-#txtAfinidad{
-    padding-top: 5%;
-    padding-bottom: 5%;
+.imgEstrella{
+	width: 100%;
+	height: 100%;
+	
+}
+
+.imgEstrellaF{
+	width: 100%;
+	height: 100%;
+	
+}
+#contTXTAfiidad{
+	margin-bottom: 50%;
+
+}
+#contTXTAfiidadFinal{
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#txtAfiidad{
+	font-size: 1.3vw;
+}
+
+#txtcompartir{
+	font-size: 1.3vw;
+	margin-top: -1%;
+}
+
+#contImgTV{
+	display: flex;
+	justify-content: center;
+	
+	position: absolute;
+	z-index: 0;
+}
+
+#ImgTV{
+	width: 80%;
+	height: 80%;
+	
 
 }
 
 
-
-#video{
-    height: 100%;
-    width: 100%;
-	position: fixed;
+#contTV{
 	z-index: -100;
 }
 
+
+#contvideo{
+	width: 65%;
+	height: 65%;
+	margin-left: 15%;
+	margin-top: 4%;
+	
+}
+
+#video{
+	
+	
+}
+
 .ContBotonesPadre{
+	height: 50%;
 	width: 100%;
 	position: absolute;
-	bottom:20%;
-	height: 25%;
+	top: 65%;
+	left: 22%;
 }
 .ContBotonesHijo{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	height: 100%;
+	width: 50%;
+	height: 30%;
+
+
 }
 
 .butonResp{
+	border: none;
+	background: none;
 	width: 100%;
 	height: 100%;
-	padding-top: 5%;
-	padding-bottom: 5%;
-	background-color: gray;
-	border-radius: 2vw;
 	opacity: 0.7;
-	font-size: 2.5vw;
+	font-size: 1.5vw;
 	white-space: normal;
 	line-height: 100%;
 	font-weight: bold;
 	z-index: 2;
+	background-image: url("../img/boton1.png");
+	background-size: 100% 100%;
+	margin-bottom: 100%;
 	
 }
 
 .butonResp:hover{
 	opacity: 1;
 	color: black;
-	}
-.contBtIndi{
-width: 25%;
-height: 100%;
+}
 
+.contBtIndi{
+width: 80%;
+height: 100%;
+padding: 5%;
+
+}
+
+.imgButton{
+	width: 100%;
+	height: 100%;
 }
 
 #contRedes{
-	position: absolute;
-    width: 6%;
-    height: 8%;
-     margin: 1%;
-    margin-left: 10%;
+	
+    width: 20%;
+    height: 20%;
+    margin: 1%;
    display: flex;
    align-content: space-around;
-   background-color:rgba(0, 0, 0, 0.8);;
    padding: 0.5%;
-   border-radius: 1rem;
-   bottom: 85%;
-left: 75%;
+   
 }
+.contRed{
+	margin-left: 5%;
+	margin-right: 5%;
+  }
 
 .imgTwitter{
 width: 100%;
 height: 100%;
-
+object-fit: contain;
 }
 
-.contRed{
-  width: 100%;
-    margin: 5%;
+#BotonEmpezar{
+	width: 25%;
+	height: 30%;
+	background-color: white;
+	border-color: black;
+	position:absolute;
+	z-index: 100;
+	top: 40%;
+	left: 38%;
+	border: none;
+	background: none;
 }
+
+#contBotonEmpezar{
+	display: flex;
+	justify-content: center;
+	
+}
+
+#imgBtEmpezar{
+	width: 100%;
+	height: 100%;
+}
+
