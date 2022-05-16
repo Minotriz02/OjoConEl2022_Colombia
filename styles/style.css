@@ -6,7 +6,7 @@
 * {
   padding: 0;
   margin: 0;
-  /*overflow:hidden;*/
+  overflow: hidden;
   font-family: pixelFont;
 }
 
@@ -19,17 +19,16 @@
 }
 
 #bodyCanvas {
-  height: 60vh;
+  height: 70vh;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 canvas {
   background-image: url("/img/pixil-layer-Mapa.png");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  height: 100%;
-  width: 100%;
+  width: 104%;
 }
 
 /* Style the header with a grey background and some padding */
@@ -92,6 +91,9 @@ canvas {
   font-size: 15px;
   line-height: 24px;
   color: #737373;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .site-footer hr {
