@@ -1,11 +1,7 @@
 
 body{
-<<<<<<< HEAD
-    background-color:#22B8EE;
+    background-color:black;
 	font-family: 'VT323', monospace;
-=======
-    background-color:#7FB637;
->>>>>>> main
 	overflow: hidden;
 }
 
@@ -13,8 +9,8 @@ body{
 	position: relative;
 }
 #contAfinidad{
-	width: 40%;
-	height: 50%;
+	width: 25%;
+	height: 35%;
 	object-fit: contain;
 	background-image: url("../img/marco.png");
 	background-size: 100% 100%;
@@ -24,15 +20,16 @@ body{
 	align-items: center;
 	position: absolute;
 	z-index: 100;
-	top: 30%;
-	left: 25%;
+	top: 24%;
+	left: 34.5%;
+	
 }
 
 
 
 #contAfinidadFinal{
-	width: 40%;
-	height: 50%;
+	width: 25%;
+	height: 35%;
 	object-fit: contain;
 	background-image: url("../img/marco.png");
 	background-size: 100% 100%;
@@ -43,8 +40,8 @@ body{
 	position: absolute;
 	z-index: 100;
 	top: 22%;
-	left: 26%;
-	padding-bottom: 5%;
+	left: 34.5%;
+	padding-bottom:2%;
 }
 
 #contEstrellas{
@@ -54,8 +51,12 @@ body{
 	flex-direction: row;
 	justify-content: space-between;
 	padding-top: 6%;
+
 	
 }
+
+
+
 
 .imgEstrella{
 	width: 100%;
@@ -69,7 +70,7 @@ body{
 	
 }
 #contTXTAfiidad{
-	margin-bottom: 50%;
+
 
 }
 #contTXTAfiidadFinal{
@@ -77,28 +78,38 @@ body{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-top: 5%;
+	
+}
+
+#txtNumeroEstrellas{
+	font-size: 1vw;
+	margin-bottom: 10%;
+	padding: 5%;
+	text-align: center;
 }
 
 #txtAfiidad{
-	font-size: 1.3vw;
+	font-size: 0.8vw;
+	margin-bottom: 2%;
 }
 
 #txtcompartir{
-	font-size: 1.3vw;
+	font-size: 1vw;
 	margin-top: -1%;
 }
 
 #contImgTV{
 	display: flex;
 	justify-content: center;
-	
+	margin-top: 1.3%;
 	position: absolute;
 	z-index: 0;
 }
 
 #ImgTV{
-	width: 80%;
-	height: 80%;
+	width: 50%;
+	height: 50%;
 	
 
 }
@@ -106,15 +117,17 @@ body{
 
 #contTV{
 	z-index: -100;
+
 }
 
 
 #contvideo{
-	width: 65%;
-	height: 65%;
-	margin-left: 15%;
-	margin-top: 4%;
-	
+
+	width: 37.5%;
+	height: 45%;
+	margin-top: 4.5%;
+	margin-left: 30%;
+	padding-bottom: 10%;
 }
 
 #video{
@@ -123,19 +136,19 @@ body{
 }
 
 .ContBotonesPadre{
-	height: 50%;
+	height: 40%;
 	width: 100%;
 	position: absolute;
-	top: 65%;
-	left: 22%;
+	top: 49%;
+	left: 30%;
 }
 .ContBotonesHijo{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	width: 50%;
+	width: 35%;
 	height: 30%;
-
+padding-bottom: 10%;
 
 }
 
@@ -195,14 +208,14 @@ object-fit: contain;
 }
 
 #BotonEmpezar{
-	width: 15%;
-	height: 30%;
+	width: 10%;
+	height: 25%;
 	background-color: white;
 	border-color: black;
 	position:absolute;
 	z-index: 100;
-	top: 40%;
-	left: 38%;
+	top: 30%;
+	left: 43%;
 	border: none;
 	background: none;
 }
@@ -237,3 +250,4 @@ object-fit: contain;
 	background: none;
 
 }
+
