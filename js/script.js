@@ -203,7 +203,7 @@ let draw2 = () => {
         console.log(pos);
     }
 
-    if (ePressed && characterY < H1.posY && characterY > H1.posY - characterHeight && characterX < H1.posX && characterX > H1.posX - characterWidth) {
+    if ((ePressed|| touch) && characterY < H1.posY && characterY > H1.posY - characterHeight && characterX < H1.posX && characterX > H1.posX - characterWidth) {
         console.log(sessionStorage.getItem('Video'))
         sessionStorage.setItem('Video', 1);
         window.location.replace("http://127.0.0.1:5500//video.html");
@@ -211,7 +211,7 @@ let draw2 = () => {
         ePressed = false;
     }
 
-    if (ePressed && characterY < H2.posY && characterY > H2.posY - characterHeight && characterX < H2.posX && characterX > H2.posX - characterWidth) {
+    if ((ePressed|| touch) && characterY < H2.posY && characterY > H2.posY - characterHeight && characterX < H2.posX && characterX > H2.posX - characterWidth) {
         console.log(sessionStorage.getItem('Video'))
         sessionStorage.setItem('Video', 2);
         console.log(sessionStorage.getItem('Video'))
@@ -220,7 +220,7 @@ let draw2 = () => {
 
     }
 
-    if (ePressed && characterY < H3.posY && characterY > H3.posY - characterHeight && characterX < H3.posX && characterX > H3.posX - characterWidth) {
+    if ((ePressed|| touch) && characterY < H3.posY && characterY > H3.posY - characterHeight && characterX < H3.posX && characterX > H3.posX - characterWidth) {
         console.log(sessionStorage.getItem('Video'))
         sessionStorage.setItem('Video', 3);
         window.location.replace("http://127.0.0.1:5500//video.html");
